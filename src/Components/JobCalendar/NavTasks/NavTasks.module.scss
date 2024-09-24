@@ -1,0 +1,33 @@
+.mainNavWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 5px;
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    li {
+      width: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      :last-child {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.active {
+  box-shadow: 2px 2px 5px rgba(0,0,0,.9);
+}
+
+.tasks_list {
+  margin-top: 10px;
+}
+
+.sub_nav_wrapper {
+  margin: 5px;
+}

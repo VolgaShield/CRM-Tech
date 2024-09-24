@@ -1,0 +1,110 @@
+.commentWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.commentHeader {
+  display: flex;
+  border-bottom: 1px solid #575757;
+  padding: 0 20px;
+  align-items: center;
+
+  height: 7%;
+  img {
+    width: 24px;
+  }
+  p {
+    margin-left: 70px;
+    font-size: 18px;
+  }
+}
+
+.messageWrapper {
+  height: 77%;
+  background: #f5ecec;
+  padding-top: 10px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.inputWrapper {
+
+  height: 100px;
+  border-top: 1px solid #575757;
+  box-shadow: -1px 0 3px rgba(0,0,0,.2);
+  display: flex;
+
+  .textArea {
+    width: 78%;
+    resize: none;
+    height: 82%;
+    margin: 5px 3.5% 5px 3%;
+    border: 1px solid #096ad9;
+    border-radius: 8px;
+    outline: none;
+    overflow: scroll;
+    padding: 2px 5px;
+  }
+
+  .inputButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      border: 2px solid #096ad9;
+      padding: 5px;
+      width: 20px;
+      border-radius: 25px;
+    }
+  }
+}
+
+.message {
+  padding: 5px 20px;
+
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  .user {
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .messageText {
+    background: white;
+    padding: 5px;
+    border: 1px solid #b6a9a9;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 7px;
+  }
+  .time {
+    float: right;
+    font-size: 12px;
+    color: #535353;
+  }
+}
+
+.messageOther {
+  justify-content: flex-end;
+  .user {
+
+  }
+
+}
+
+.noMessages {
+  margin: 0 auto;
+
+  text-align: center;
+  padding: 5px 5px;
+  background: white;
+  width: 40%;
+  border-radius: 25px;
+  box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+}

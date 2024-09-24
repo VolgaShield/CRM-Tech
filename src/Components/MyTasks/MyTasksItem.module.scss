@@ -1,0 +1,302 @@
+.taskItemWrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  overflow: scroll;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #aaaaaa;
+    img {
+      width: 20px;
+
+    }
+  }
+}
+
+.taskItemBody {
+  padding: 10px 20px;
+  position: relative;
+  img {
+    width: 20px;
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    border: 2px solid #aaaaaa;
+    padding: 2px 3px;
+    border-radius: 8px;
+  }
+
+  input {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #aaaaaa;
+    font-size: 14px;
+    outline: none;
+  }
+}
+
+.taskItemInput {
+  margin-top: 10px;
+  .label {
+    font-size: 12px;
+    color: #636363;
+    border: none;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+
+
+.processTracker {
+  margin: 20px 20px;
+}
+
+.processItem {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+  .circle {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+    border-radius: 50px;
+    background: grey;
+    z-index: 2000;
+  }
+  .line {
+    height: 45px;
+    border: 1px solid grey;
+    position: absolute;
+    bottom: 20px;
+    left: 9px;
+  }
+}
+
+.activeProcess {
+  .circle {
+    background: #3d3df3;
+  }
+  color: #3d3df3;
+  .line {
+    border: 1px solid  #3d3df3 !important;
+
+  }
+}
+
+.failedProcess {
+  .circle {
+    background:red;
+  }
+  color: red;
+  .line {
+    border: 1px solid  #3d3df3 !important;
+
+  }
+}
+
+
+.finishButton {
+  background: white;
+  border: 2px solid green;
+  color: #096d09;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.raport {
+  float: right;
+  margin: 10px 0;
+  background: white;
+  border: 1px solid #2b2b2b;
+  color: #2B2B2BFF;
+  font-size: 13px;
+  border-radius: 5px;
+  padding: 5px 15px;
+
+}
+
+.brackButton {
+  margin-bottom: 10px;
+  color: red;
+  border-color: red;
+}
+
+.Nav {
+  li {
+    padding: 6px 10px;
+    text-align: center;
+    border-bottom: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    width: 33%;
+  }
+  ul {
+    display: flex;
+    :last-child {
+      border-right: none;
+    }
+  }
+  img {
+    width: 30px;
+  }
+
+  .active {
+    border-bottom: 1px solid white;
+  }
+}
+
+.filesWrapper {
+
+padding-top: 1px;
+  li {
+    border-bottom: 2px solid gray;
+    font-weight: 500;
+
+  }
+  ul {
+
+  }
+  .fileTitle {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  p {
+
+  }
+}
+
+.photoDrop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  img {
+    width: 18px !important;
+    margin-left: 10px;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 20px;
+    }
+  }
+}
+
+.uploadImage {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.notActive {
+  background: #c4c4c4;
+}
+.filesLabel {
+  margin: 0 auto;
+  background: white;
+  border: 1px solid black;
+  margin-top: 20px;
+  input {
+    display: none;
+  }
+  padding: 5px 10px;
+  width: 150px;
+  text-align: center;
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+
+.footerNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  li {
+    padding: 6px 10px;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    width: 33%;
+  }
+  ul {
+    display: flex;
+    :last-child {
+      border-right: none;
+    }
+  }
+  img {
+    width: 30px;
+  }
+
+}
+
+.deffect {
+  background: red;
+}
+
+.status {
+  font-size: 16px !important;
+}
+
+.redStatus {
+  color: red;
+}
+
+.orangeStatus {
+  color: orange;
+}
+
+.blueStatus {
+  color: #288be7;
+}
+
+.proccessLabel {
+  display: flex;
+  align-items: center;
+  p {
+    margin-right: 5px;
+  }
+}
+
+
+.countUnwrite {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+
+  background: red;
+  color: white;
+  font-weight: 500;
+  border-radius: 25px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.loaderWrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.3);
+  padding-top: 50%;
+}
+
+.dflex {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+}

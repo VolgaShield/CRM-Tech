@@ -1,0 +1,78 @@
+@import '../../styles/mix.scss';
+
+
+
+
+.techItem {
+ border-bottom: 1px solid #808080;
+}
+
+.timeAnalys {
+  padding: 10px 20px;
+  border-bottom: 2px solid #808080;
+}
+
+.zeroTasks {
+ text-align: center;
+  padding-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 8px;
+}
+
+.taskList {
+  padding: 0 20px;
+  padding-top: 8px;
+  p {
+    margin: 3px 0;
+  }
+  li {
+    @include d-flex-r();
+    padding: 5px 0;
+    border-bottom: 1px dashed grey;
+  }
+
+  .counter {
+    padding-right: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .typeTask {
+    font-weight: 500;
+  }
+}
+
+.address {
+  font-size: 13px;
+  color: #535353;
+}
+
+.address2 {
+  font-size: 13px;
+  color: #535353;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 14px;
+}
+
+.timeLock {
+  border: 1px solid red;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  margin: 10px 0;
+  span {
+    font-weight: 500;
+  }
+}
+
+.titles {
+  @include d-flex-r();
+}
+
+.completed {
+  font-weight: 500;
+}

@@ -1,0 +1,71 @@
+th {
+  font-weight: normal;
+}
+
+.chooseDate {
+  margin: 20px;
+
+  input {
+    margin-right: 6px;
+  }
+
+  button {
+    padding: 6px 8px;
+  }
+}
+
+
+.objects {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  position: relative;
+  width: 100%;
+
+  margin: 6px 0px;
+}
+
+@media (min-width: 769px) {
+  .objects {
+    justify-content: space-between;
+  }
+}
+
+.objectItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: black;
+  background-color: white;
+
+  width: 280px;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 0;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    margin: 6px;
+    margin-left: 10px;
+
+    .pcoNumber {
+      margin: auto;
+    }
+
+    .pcoNumber,
+    .name {
+      font-weight: 600;
+    }
+
+    .address {
+      text-decoration: underline;
+
+      margin-top: 5px;
+    }
+  }
+}

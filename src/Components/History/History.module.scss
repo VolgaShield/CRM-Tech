@@ -1,0 +1,58 @@
+.history_item {
+
+  padding: 5px 20px;
+  border-bottom: 1px solid #aaaaaa;
+
+  .type {
+    font-size: 15px;
+
+    font-weight: 500;
+  }
+
+  .main_title {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 3px 0;
+  }
+
+  .time {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: #4b4b4b;
+    padding-top: 5px;
+  }
+
+}
+.red {
+  background: rgba(red, 0.2);
+
+}
+.gray {
+  background: rgba(black, 0.2);
+
+}
+
+.green {
+  background: rgba(green, 0.2);
+}
+
+.redTitle {
+  color: red;
+}
+
+.grayTitle {
+  color: black;
+}
+
+.greenTitle {
+  color: green;
+}
+
+.orange {
+  background: rgba(orange, 0.2);
+}
+
+.orangeTitle {
+  color: orange;
+}

@@ -1,0 +1,8 @@
+@import '../../styles/mix.scss';
+
+.techWrapper {
+  @include d-flex-r();
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}

@@ -1,0 +1,51 @@
+@import '../../styles/mix.scss';
+
+.wrapper {
+    display: flex;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid gray;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 25px;
+}
+
+.circle2 {
+  width: 15px;
+  height: 15px;
+  border-radius: 25px;
+}
+.red {
+  background: red;
+}
+.orange {
+  background: #ff8000;
+}
+
+.yellow {
+  background: #ffe000;
+}
+.green {
+  background: green;
+}
+.transparentRed {
+  background: rgba(255,0,0,0.4);
+}
+
+.blue {
+  background: #288be7;
+}
+
+.statusWrapper {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.date {
+  float: right;
+  font-size: 12px;
+  margin-right: 10px;
+}

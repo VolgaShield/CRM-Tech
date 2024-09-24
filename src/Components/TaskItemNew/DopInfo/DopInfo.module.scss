@@ -1,0 +1,110 @@
+.dopInfo {
+  width: 100%;
+    position: absolute;
+  background: white;
+  z-index: 1000;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 20px;
+    border-bottom: 1px solid black;
+    div {
+      display: flex;
+      align-items: center;
+
+    }
+    img {
+      padding-right: 20px;
+    }
+  }
+}
+
+.infoWrapper {
+  padding: 5px 20px;
+  font-size: 14px;
+  span {
+
+    font-weight: 500;
+  }
+  .title {
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+.eventsArea {
+  max-height: 350px;
+  background: white;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+  overflow: scroll;
+}
+
+.event_item {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  border-bottom: 1px solid #8b8b8b;
+  min-height: 30px;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  :nth-child(2) {
+    margin-left: 10px;
+  }
+  div {
+    display: flex;
+
+    :first-child {
+
+      margin-left: 10px;
+    }
+    :nth-child(2) {
+      text-align: left;
+      margin-left: 20px;
+    }
+  }
+  font-size: 12px;
+}
+
+.alarm {
+  background: red;
+  color: white;
+}
+
+.disarm {
+  color: blue;
+}
+
+.arm {
+  color: white;
+  background: blue;
+}
+
+.fault {
+  color: white;
+  background: brown;
+}
+
+.other {
+  background: #cbcbcb;
+  color: black;
+}
+
+.events_counter {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 0;
+
+
+  li {
+    padding: 5px 8px;
+    margin: 0 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+}

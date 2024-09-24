@@ -1,0 +1,117 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  z-index: 31232132131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  label {
+    padding: 5px 0;
+    margin-top: 0 !important;
+  }
+
+}
+
+
+.popUpWrapper {
+  width: 80%;
+  height: 90%;
+  background: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  overflow: auto;
+  .input {
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  select {
+
+    outline: none;
+
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.techWrapper {
+
+  span {
+    font-weight: 500;
+  }
+  label {
+    display: flex;
+
+    align-items: center;
+    input {
+      width: 18px;
+      margin-right: 10px;
+      height: 18px;
+    }
+  }
+}
+
+.block {
+  border-bottom: 2px solid #acacac;
+  padding: 5px 0;
+}
+
+.title {
+  font-size: 13px;
+  padding: 5px 0;
+  color: #494949;
+}
+
+.datePicker {
+
+}
+
+.red {
+  color:red;
+  font-weight: 500;
+}
+
+.label_check {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  input {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  button {
+    padding: 8px 25px;
+    border: none;
+    outline: none;
+    background: #4444ff;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+  }
+}
+
+.closeWrapper {
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  float: right;
+}

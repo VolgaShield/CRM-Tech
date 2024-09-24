@@ -1,0 +1,444 @@
+.timeLineWrapper {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .titleWrapper {
+    min-width: 7%;
+    max-width: 7%;
+  }
+}
+
+/* CSS rules for mobile */
+@media (max-width: 767px) {
+  .titleWrapper {
+    min-width: 20%;
+    max-width: 20%;
+  }
+}
+
+.title {
+  padding-left: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  width: 70px;
+  display: flex;
+  flex-direction: row;
+}
+
+.timeLine {
+
+  height: 40px;
+  border: 1px solid gray;
+  margin: 10px 20px;
+  border-radius: 3px;
+  position: relative;
+  background: linear-gradient(#bbb, transparent 1px), linear-gradient(90deg, #bbb, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+
+  .labelStart {
+
+    top: -12px;
+    left: -10px;
+
+  }
+
+  .label2 {
+
+    top: -12px;
+    left: 2*60*0.5-10px;
+
+  }
+
+  .label3 {
+
+    top: -12px;
+    left: 4*60*0.5-10px;
+
+  }
+
+  .label4 {
+
+    top: -12px;
+    left: 6*60*0.5-10px;
+  }
+
+  .labelFinish {
+    top: 43px;
+    right: -15px;
+  }
+
+  span {
+    position: absolute;
+    font-size: 11px;
+  }
+
+  .item {
+    position: absolute;
+    height: 100%;
+
+    .start {
+      left: -10px;
+    }
+
+    .finish {
+      right: -14px;
+    }
+
+    span {
+      position: absolute;
+      font-size: 10px;
+      bottom: -13px;
+    }
+  }
+}
+
+.label {
+  position: absolute;
+  top: -60px;
+  background: white;
+  border: 1px solid #ef5d5d;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 50vw;
+  font-size: 12px;
+}
+
+.mainInfo {
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.startTimeLine {
+  height: 100%;
+  border-left: 1px solid red;
+  position: absolute;
+  top: 5px;
+  z-index: 10;
+  left: 130px;
+
+  p {
+    position: absolute;
+    left: -12px;
+    top: -12px;
+    font-size: 12px;
+    color: red;
+  }
+}
+
+.smallText {
+  font-size: 5px !important;
+}
+
+.scrollBar {
+  width: 110px;
+  height: 110%;
+  background: rgba(0, 0, 0, .0);
+  position: absolute;
+  z-index: 100;
+}
+
+.trip {
+  border: 2px solid blue;
+  border-radius: 5px;
+}
+
+.techNav {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  display: flex;
+  justify-content: center;
+
+  li {
+    padding: 5px 15px;
+    background: #cfcfcf;
+    border-radius: 5px;
+    margin: 0 20px;
+    border: 1px solid #7c7c7c;
+    font-size: 14px;
+  }
+
+  .active {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  }
+}
+
+.techChecks {
+  display: flex;
+  justify-content: center;
+
+  div {
+    margin: 0 40px;
+
+    p {
+      margin-bottom: 5px;
+      color: red;
+      text-align: center;
+    }
+  }
+}
+
+.tasks {
+  margin-top: 10px;
+  margin-left: 50px;
+
+  .title {
+    text-align: center;
+    color: red;
+
+  }
+}
+
+.brigad {
+  display: flex;
+  justify-content: space-around;
+
+  span {
+    font-size: 11px;
+    font-weight: 500;
+    color: #646464;
+  }
+
+  h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.completedJob {
+  display: flex;
+  justify-content: space-around;
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ff0000;
+  }
+
+  h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.minus {
+
+  img {
+    height: 7px;
+  }
+
+
+}
+
+.notInJob {
+  text-align: center;
+
+  height: 100%;
+  border-radius: 3px;
+  color: white;
+  font-weight: 500;
+  background: red;
+}
+
+.plus2 {
+  img {
+    width: 20px;
+  }
+
+  margin-left: 27px;
+
+}
+
+.groupTimeLine {
+  margin: 7px 5px;
+  padding: 5px 0;
+
+  border: 1px solid #f50000;
+  border-radius: 10px;
+}
+
+.number {
+  font-size: 10px;
+  color: black;
+  padding: 2px;
+}
+
+.past {
+  font-size: 10px;
+  color: black;
+  padding: 2px;
+  padding-top: 12px;
+}
+
+.bottomLabel {
+  z-index: 1000;
+  background: white;
+  left: -12px;
+}
+
+.finishBottomLabel {
+  z-index: 1000;
+  background: white;
+  right: -12px;
+}
+
+.vod {
+  background: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.graphList {
+  position: relative;
+  margin-top: 10px;
+}
+
+.minus_img {
+  width: 16px;
+  height: 16px;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.tech_item {
+  display: flex;
+  align-items: center;
+}
+
+.helper {
+  left: 30px;
+  width: 70px;
+  text-align: center;
+  top: -14px;
+  padding: 0;
+  font-weight: 500;
+  border-top: 1px solid red;
+  border-right: 1px solid red;
+  border-left: 1px solid red;
+  border-radius: 5px 5px 5px 0;
+}
+
+.dezh {
+  border: 2px solid green;
+  border-radius: 5px;
+}
+
+.orange {
+  color: orange !important;
+}
+
+
+.plane_checkBox {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 10px !important;
+
+  input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  label {
+    display: flex;
+    padding-top: 2px;
+    align-items: center;
+    font-size: 16px !important;
+  }
+}
+
+.not_checked {
+  height: 100%;
+  width: 10px;
+  background: red;
+  margin-left: -11px;
+}
+
+.plane_list {
+  .title_plane {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  li {
+    padding: 10px 0;
+    border-bottom: 2px solid gray;
+
+    p {
+      font-size: 13px;
+    }
+
+    display: flex;
+
+    .circle {
+      width: 20px;
+      height: 20px;
+
+      border-radius: 25px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    .blue {
+      background: blue;
+    }
+
+    .orange {
+      background: orange;
+    }
+
+    .green {
+      background: green;
+    }
+  }
+
+  .gray {
+    color: #5c5c5c;
+  }
+}
+
+
+.brigad {
+  align-items: center;
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  li {
+    margin-left: 20px;
+  }
+}
+
+.chief {
+  text-align: center;
+
+  span {
+    font-size: 11px;
+    font-weight: 500;
+    color: #646464;
+  }
+
+  h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+}

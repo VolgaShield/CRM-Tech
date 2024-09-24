@@ -1,0 +1,42 @@
+.wrapper {
+  margin: 10px 0;
+
+}
+
+.collapse_wrapper {
+  &:first-child {
+    border-top: 1px solid #b1b1b1;
+  }
+}
+
+.fixed {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  position: fixed;
+
+  font-weight: 500;
+  border-top: 1px solid gray;
+  background: white;
+  bottom: 0;
+  z-index: 321321321321;
+}
+
+.header {
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
+  display: flex;
+  justify-content: flex-end;
+  padding: 13px 0;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 321321321321;
+  border-bottom: 1px solid gray;
+}

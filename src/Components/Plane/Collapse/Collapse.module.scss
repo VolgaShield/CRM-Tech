@@ -1,0 +1,23 @@
+.dropdowner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 15px;
+  margin: 3px 0;
+  font-weight: 500;
+}
+
+.wrapper {
+  border-bottom: 1px solid #b1b1b1;
+ // border-top: 1px solid #b1b1b1;
+}
+
+.item_list {
+  :last-child {
+    box-shadow: none;
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
+}

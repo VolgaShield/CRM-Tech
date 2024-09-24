@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  margin-bottom: 5px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #afafaf;
+
+  img {
+    position: absolute;
+    width: 14px;
+    left: 20px;
+    top: 20px;
+    height: 14px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    color: blue;
+  }
+  input {
+    border: none;
+    background: none;
+    padding: 5px 20px;
+    border-bottom: 1px solid gray;
+    outline: none;
+  }
+}
