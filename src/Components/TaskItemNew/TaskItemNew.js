@@ -484,16 +484,32 @@ const TaskItemNew = ({ item }) => {
           {<p>{deps.find(el => +el.DEP === filterTaskCust(item[4]))?.CHIEF.LAST_NAME}</p>}
         </div>
         <div className={styles.taskItemInput}>
-          <p className={styles.label}>Исполнитель</p>
-          {edit ?
-            <select onChange={(e) => setForm(prevState => ({ ...prevState, executor: e.target.value }))} placeholder={'Общая'}>
-              {techsData.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
-              {user.UF_DEPARTMENT[0] === 15 ? <option value="Закаблуков Денис Владимирович">Закаблуков Д.В. </option> : null}
-              <option value="">Общая (Без Исполнителя)</option>
-              <option value={item[7].length ? getShortName(item[7]) : item[55] ? getShortName(item[55]) : ""} selected disabled hidden>{item[7].length ? getShortName(item[7]) : item[55].length ? getShortName(item[55]) : "Общая (Без Исполнителя)"}</option>
-            </select> :
-            <p>{item[7].length ? getLastName(item[7]) : item[55].length ? getLastName(item[55]) : 'Не назначен'} </p>}
-        </div>
+        <p className={styles.label}>Исполнитель</p>
+        {edit ? (
+          <select onChange={(e) => setForm(prevState => ({ ...prevState, executor: e.target.value }))}>
+            <option 
+              value={item[7].length ? getShortName(item[7]) : item[55] ? getShortName(item[55]) : ""} 
+              selected 
+              disabled 
+              hidden>
+              {item[7].length ? getShortName(item[7]) : item[55].length ? getShortName(item[55]) : "Общая (Без Исполнителя)"}
+            </option>
+            {[
+              // { value: 'Закаблуков Денис Владимирович', label: 'Закаблуков Д.В.' },
+              { value: 'Галкин Сергей Александрович', label: 'Галкин С.А.' },
+              { value: 'Косарев Александр Сергеевич', label: 'Косарев А.С.' },
+              { value: 'Орлов Евгений Сергеевич', label: 'Орлов Е.С.' },
+              { value: 'Пономарев Сергей Владимирович', label: 'Пономарев С.В.' },
+              { value: 'Трусов Егор Владимирович', label: 'Трусов Е.В.' },
+              { value: '', label: 'Общая (Нет исполнителя)' }
+            ].map(el => (
+              <option value={el.value} key={el.value}>{el.label}</option>
+            ))}
+          </select>
+        ) : (
+          <p>{item[7].length ? getLastName(item[7]) : item[55].length ? getLastName(item[55]) : 'Не назначен'}</p>
+        )}
+      </div>
         <div className={styles.taskItemInput}>
           <p className={styles.label}>Название объекта</p>
           {edit ? <input type="text" value={form.name} onChange={e => setForm(prevState => ({ ...prevState, name: e.target.value }))} /> : <p>{item[2]}</p>}
