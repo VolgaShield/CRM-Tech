@@ -58,8 +58,7 @@ function App() {
     useEffect(() => {
         if (window.bx24) {
             const bx24 = window.bx24;
-            bx24.init(bx24.callMethod('user.current', {}, function (res) { setUser(res.data().ID, res.data().NAME, res.data().LAST_NAME, res.data().SECOND_NAME, res.data().UF_DEPARTMENT) }));
-            console.log(res.data().toString);
+            bx24.init(bx24.callMethod('user.current', {}, function (res) { setUser(res.data()) }));
         } else {
             //setUser({ID: "155", NAME: 'Тимур', LAST_NAME: 'Лиджанов', SECOND_NAME : 'Николаевич', UF_DEPARTMENT: [51]})
             // setUser({ID: "3717", NAME: 'Егор', LAST_NAME: 'Трусов', SECOND_NAME : 'Владимирович', UF_DEPARTMENT: [5]})

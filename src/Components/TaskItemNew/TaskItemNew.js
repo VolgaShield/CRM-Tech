@@ -60,7 +60,6 @@ import Suitcase from '../../img/Suitcase.png'
 //CSS
 import styles from "./MyTasksItem.module.scss";
 
-
 const PopUp = ({ data, func }) => {
 
   useEffect(() => {
@@ -498,7 +497,6 @@ const TaskItemNew = ({ item }) => {
         <div className={styles.taskItemInput}>
           <p className={styles.label}>Название объекта</p>
           {edit ? <input type="text" value={form.name} onChange={e => setForm(prevState => ({ ...prevState, name: e.target.value }))} /> : <p>{item[2]}</p>}
-
         </div>
         <div className={styles.taskItemInput}>
           <p className={styles.label}>Адрес объекта</p>
