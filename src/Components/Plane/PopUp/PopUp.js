@@ -32,7 +32,6 @@ const imMessageAdd = (chatId, message, isSystem = true) => {
   });
 }
 
-
 const TechItem = ({ item, func, func2, task, checked, techs, all, tasksToday, setCoef, datepicker }) => {
   const [tasks, setTasks] = useState([]);
   const [htmlItem, setHtmlItem] = useState(<span>0</span>)
@@ -84,23 +83,23 @@ const TechItem = ({ item, func, func2, task, checked, techs, all, tasksToday, se
   }, [checked, all, datepicker, techs]);
 
 
-  return (
-    <div className={styles.techWrapper}>
-      <label>
-        <input type="checkbox" onChange={(e) => {
+  return ( 
+  <div className={styles.techWrapper}>
+    <label>
+      <input type="checkbox" onChange={(e) => {
           if (e.target.checked) {
             func()
           } else {
             func2()
           }
         }} />
-        {item.LAST_NAME}
-      </label>
-      <div className={styles.flex}>
-        <p>Задач:  <span>{tasks.length}</span></p>
-        <p>КПД: {htmlItem}</p>
-      </div>
+      {`${item.LAST_NAME} ${item.NAME[0]}. ${item.SECOND_NAME[0]}.`}
+    </label>
+    <div className={styles.flex}>
+      <p>Задач: <span>{tasks.length}</span></p>
+      <p>КПД: {htmlItem}</p>
     </div>
+  </div>
   )
 }
 
@@ -118,6 +117,17 @@ const PopUp = ({ item, time, close }) => {
     techs: [],
     all: false
   })
+
+  // Последний раз техники и админы обновлялись 27.09.2024
+  const techsData = [
+    //{ ID: "3789", NAME: 'Денис', LAST_NAME: 'Закаблуков', SECOND_NAME : 'Владимирович', UF_DEPARTMENT: [15] },
+    { ID: "3707", NAME: 'Сергей', LAST_NAME: 'Галкин', SECOND_NAME: 'Александрович', UF_DEPARTMENT: [5] },
+    { ID: "3769", NAME: 'Александр', LAST_NAME: 'Косарев', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
+    { ID: "91", NAME: 'Евгений', LAST_NAME: 'Орлов', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
+    { ID: "81", NAME: 'Сергей', LAST_NAME: 'Пономарев', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] },
+    { ID: "3717", NAME: 'Егор', LAST_NAME: 'Трусов', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] }
+  ];
+
   const admins = ['1', '11', '33', '29', '23', '53', '317', '109', '147', '3503', '3707', '83', '211', '3745', '3759', '3763'];
 
   const lowleveltech = ['Трусов Егор Владимирович'];
@@ -212,10 +222,6 @@ const PopUp = ({ item, time, close }) => {
     }
   }
 
-
-  //console.log(form)
-
-
   return (
     <div className={styles.wrapper} onClick={(e) => e.stopPropagation()}>
 
@@ -270,41 +276,30 @@ const PopUp = ({ item, time, close }) => {
 
         </div> : null}
         <div className={styles.block}>
-          <p className={styles.title}>Техники</p>
-          {users.find(el => +el.DEP === user.UF_DEPARTMENT[0]) ? users.find(el => +el.DEP === user.UF_DEPARTMENT[0]).OTHER?.map(el =>
-            <TechItem
-              item={el}
-              key={el.ID}
-              func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
-              func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
-              task={item}
-              checked={form.techs.filter(el2 => el2 === `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`).length}
-              techs={form.techs}
-              all={form.all}
-              tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
-              setCoef={(c, name) => setCoef(prevState => {
-                const newArr = prevState.filter(names => names.name !== name)
-                return [...newArr, { name: name, coef: c }]
-              })}
-              datepicker={form.datepicker}
-            />) : users.find(el => +el.DEP === 5)?.OTHER?.map(el =>
-              <TechItem
-                item={el}
-                key={el.ID}
-                func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
-                func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
-                task={item}
-                checked={form.techs.filter(el2 => el2 === `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`).length}
-                techs={form.techs}
-                all={form.all}
-                tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
-                setCoef={(c, name) => setCoef(prevState => {
-                  const newArr = prevState.filter(names => names.name !== name)
-                  return [...newArr, { name: name, coef: c }]
-                })}
-                datepicker={form.datepicker}
-              />)}
-          {form.techs.length && item[34] !== '0' ? <p style={{ marginTop: 10 }}>Задача выполнится в течении: <span style={{ fontWeight: 500 }}>{Math.ceil(item[34] / (8 * form.techs.length))} {declOfNum(Math.ceil(item[34] / (8 * form.techs.length)), ['дня', 'дней', 'дней'])}</span></p> : null}
+        <p className={styles.title}>Техники</p>
+        {techsData.map(el => (
+          <TechItem
+            item={el}
+            key={el.ID}
+            func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
+            func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
+            task={item}
+            checked={form.techs.includes(`${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`)}
+            techs={form.techs}
+            all={form.all}
+            tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
+            setCoef={(c, name) => setCoef(prevState => {
+              const newArr = prevState.filter(names => names.name !== name);
+              return [...newArr, { name, coef: c }];
+            })}
+            datepicker={form.datepicker}
+          />
+        ))}
+        {form.techs.length && item[34] !== '0' ? (
+          <p style={{ marginTop: 10 }}>
+            Задача выполнится в течении: <span style={{ fontWeight: 500 }}>{Math.ceil(item[34] / (8 * form.techs.length))} {declOfNum(Math.ceil(item[34] / (8 * form.techs.length)), ['дня', 'дней', 'дней'])}</span>
+          </p>
+        ) : null}
         </div>
         <div>
           {form.typetime !== 'fixed' ? <label className={styles.label_check}>
@@ -319,7 +314,6 @@ const PopUp = ({ item, time, close }) => {
           </button>
         </div>
       </div>
-
     </div>
   );
 };

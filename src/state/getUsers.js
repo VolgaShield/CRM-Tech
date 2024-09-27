@@ -11,9 +11,7 @@ export const getUsers = createEffect(async () => {
     return req.json()
 })
 
-
 const $users = createStore([]).on(getUsers.doneData, (_, payload) => payload);
-
 
 export const $usersStatus = combine(
     $users, getUsers.pending,
