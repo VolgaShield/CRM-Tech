@@ -142,7 +142,7 @@ const CreateTask = ({ func }) => {
     const [create, setCreate] = useState(false);
 
     const options2 = dep
-        .filter(el => !(el.WORK_POSITION.includes('Водитель')) && !(el.WORK_POSITION.includes('Руководитель'))) // из-за этого условия не работает & !(el.WORK_POSITION.includes('Начальник'))
+        .filter(el => el.WORK_POSITION && !(el.WORK_POSITION.includes('Водитель'))) // из-за этого условия не работает & !(el.WORK_POSITION.includes('Начальник'))
         .map(el => ({ value: `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`, label: `${el.LAST_NAME} ${el.NAME[0]}.${el.SECOND_NAME[0]}` }))
 
     const items = useStore($items);
@@ -323,15 +323,11 @@ const CreateTask = ({ func }) => {
                         </div>}
                     <label>
                         Исполнитель
-                        <Select options={[
-                            { value: '', label: 'Общая (Нет исполнителя)' }, 
-                            //{ value: 'Закаблуков Денис Владимирович', label: 'Закаблуков Д.В.' },
-                            { value: 'Галкин Сергей Александрович', label: 'Галкин С.А.' },
-                            { value: 'Косарев Александр Сергеевич', label: 'Косарев А.С.' },
-                            { value: 'Орлов Евгений Сергеевич', label: 'Орлов Е.С.' },
-                            { value: 'Пономарев Сергей Владимирович', label: 'Пономарев С.В.' },
-                            { value: 'Трусов Егор Владимирович', label: 'Трусов Е.В.' }
-                            ]} onChange={(e) => setForm(prevState => ({ ...prevState, customer: e.value }))}
+                        <Select
+                            options={user.UF_DEPARTMENT[0] === 15
+                                ? options2.concat([{ value: 'Закаблуков Денис Владимирович', label: 'Закаблуков Д.В.' }]).concat([{ value: '', label: 'Общая (Нет исполнителя)' }])
+                                : options2.concat([{ value: '', label: 'Общая (Нет исполнителя)' }])}
+                            onChange={(e) => setForm(prevState => ({ ...prevState, customer: e.value }))}
                             placeholder={'Общая'} />
                     </label>
 

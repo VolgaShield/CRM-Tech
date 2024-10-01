@@ -168,14 +168,14 @@ const TaskItemNew = ({ item }) => {
     ]
    * ``` */
   const techsData = dep
-    .filter(el => el.WORK_POSITION && el.WORK_POSITION !== 'Водитель' && !(el.WORK_POSITION.includes('Руководитель'))) // из-за этого условия не работает & !(el.WORK_POSITION.includes('Начальник'))
+    .filter(el => el.WORK_POSITION && !(el.WORK_POSITION.includes('Водитель'))) // из-за этого условия не работает & !(el.WORK_POSITION.includes('Начальник'))
     .map(el => ({
       value: `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`,
       label: `${el.LAST_NAME} ${el.NAME[0]}.${el.SECOND_NAME[0]}.`
     }));
 
   /**ID Пользователей Битрикс, которым разрешен доступ на редактирование заявок */
-  const admins = [item[37], '1', '11', '33', '29', '23', '317', '211', '109', '3745', '3789', '3707'];
+  const admins = [item[37], '1', '11', '29', '33', '109', '211', '3707', '3789'];
   /** ID Пользователей Битрикс, которым доступен экспорт форм */
   const adminsForExportForms = ['1', '33', '39', '317', '3707',  '3759', '3745', '3763', '3789']
   //Информация о заявке
@@ -482,35 +482,20 @@ const TaskItemNew = ({ item }) => {
           {<p>{deps.find(el => +el.DEP === filterTaskCust(item[4]))?.CHIEF.LAST_NAME}</p>}
         </div>
         <div className={styles.taskItemInput}>
-        <p className={styles.label}>Исполнитель</p>
-        {edit ? (
-          <select onChange={(e) => setForm(prevState => ({ ...prevState, executor: e.target.value }))}>
-            <option 
-              value={item[7].length ? getShortName(item[7]) : item[55] ? getShortName(item[55]) : ""} 
-              selected 
-              disabled 
-              hidden>
-              {item[7].length ? getShortName(item[7]) : item[55].length ? getShortName(item[55]) : "Общая (Без Исполнителя)"}
-            </option>
-            {[
-              // { value: 'Закаблуков Денис Владимирович', label: 'Закаблуков Д.В.' },
-              { value: 'Галкин Сергей Александрович', label: 'Галкин С.А.' },
-              { value: 'Косарев Александр Сергеевич', label: 'Косарев А.С.' },
-              { value: 'Орлов Евгений Сергеевич', label: 'Орлов Е.С.' },
-              { value: 'Пономарев Сергей Владимирович', label: 'Пономарев С.В.' },
-              { value: 'Трусов Егор Владимирович', label: 'Трусов Е.В.' },
-              { value: '', label: 'Общая (Нет исполнителя)' }
-            ].map(el => (
-              <option value={el.value} key={el.value}>{el.label}</option>
-            ))}
-          </select>
-        ) : (
-          <p>{item[7].length ? getLastName(item[7]) : item[55].length ? getLastName(item[55]) : 'Не назначен'}</p>
-        )}
-      </div>
+          <p className={styles.label}>Исполнитель</p>
+          {edit ?
+            <select onChange={(e) => setForm(prevState => ({ ...prevState, executor: e.target.value }))} placeholder={'Общая'}>
+              <option value="">Общая (Без Исполнителя)</option>
+              <option value={item[7].length ? getShortName(item[7]) : item[55] ? getShortName(item[55]) : ""} selected disabled hidden>{item[7].length ? getShortName(item[7]) : item[55].length ? getShortName(item[55]) : "Общая (Без Исполнителя)"}</option>
+              {techsData.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
+              {user.UF_DEPARTMENT[0] === 15 ? <option value="Закаблуков Денис Владимирович">Закаблуков Д.В. </option> : null}
+            </select> :
+            <p>{item[7].length ? getLastName(item[7]) : item[55].length ? getLastName(item[55]) : 'Не назначен'} </p>}
+        </div>
         <div className={styles.taskItemInput}>
           <p className={styles.label}>Название объекта</p>
           {edit ? <input type="text" value={form.name} onChange={e => setForm(prevState => ({ ...prevState, name: e.target.value }))} /> : <p>{item[2]}</p>}
+
         </div>
         <div className={styles.taskItemInput}>
           <p className={styles.label}>Адрес объекта</p>

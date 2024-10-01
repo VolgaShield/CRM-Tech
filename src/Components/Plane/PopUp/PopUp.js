@@ -118,31 +118,8 @@ const PopUp = ({ item, time, close }) => {
     all: false
   })
 
-  // Последний раз техники и админы обновлялись 27.09.2024
-  /*
-   * Астрахань = [5]
-   * Ахтубинск = [25]
-   * Элиста = [51]
-   * Володарский = [41]
-   * Знаменск = [43]
-   * Лиман = [37]
-   * Чёрный Яр = [45]
-  */
-  const techsData = [
-  //{ ID: "3789", NAME: 'Денис', LAST_NAME: 'Закаблуков', SECOND_NAME : 'Владимирович', UF_DEPARTMENT: [15] },
-    { ID: "3707", NAME: 'Сергей', LAST_NAME: 'Галкин', SECOND_NAME: 'Александрович', UF_DEPARTMENT: [5] },
-    { ID: "3769", NAME: 'Александр', LAST_NAME: 'Косарев', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
-    { ID: "91", NAME: 'Евгений', LAST_NAME: 'Орлов', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
-    { ID: "81", NAME: 'Сергей', LAST_NAME: 'Пономарев', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] },
-    { ID: "3717", NAME: 'Егор', LAST_NAME: 'Трусов', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] },
-    { ID: "201", NAME: 'Евгений', LAST_NAME: 'Тенин', SECOND_NAME: 'Михайлович', UF_DEPARTMENT: [25] },
-    { ID: "161", NAME: 'Рамазан', LAST_NAME: 'Сариев', SECOND_NAME: 'Ергазиевич', UF_DEPARTMENT: [41] },
-    { ID: "3775", NAME: 'Баир', LAST_NAME: 'Менкураев', SECOND_NAME: 'Анатольевич', UF_DEPARTMENT: [51] },
-    { ID: "177", NAME: 'Николай', LAST_NAME: 'Мусабеков', SECOND_NAME: 'Валериевич', UF_DEPARTMENT: [51] },
-    { ID: "133", NAME: 'Савр', LAST_NAME: 'Хурумчиев', SECOND_NAME: 'Батаевич', UF_DEPARTMENT: [51] }
-  ];
-
-  const admins = ['1', '11', '33', '29', '109', '211', '3707', '3789'];
+  // Последний раз админы обновлялись 01.10.2024
+  const admins = ['1', '11', '29', '33', '109', '211', '3707', '3789'];
 
   const lowleveltech = ['Трусов Егор Владимирович'];
 
@@ -288,30 +265,41 @@ const PopUp = ({ item, time, close }) => {
           </div>
         </div> : null}
         <div className={styles.block}>
-        <p className={styles.title}>Техники</p>
-        {techsData.map(el => (
-          <TechItem
-            item={el}
-            key={el.ID}
-            func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
-            func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
-            task={item}
-            checked={form.techs.includes(`${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`)}
-            techs={form.techs}
-            all={form.all}
-            tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
-            setCoef={(c, name) => setCoef(prevState => {
-              const newArr = prevState.filter(names => names.name !== name);
-              return [...newArr, { name, coef: c }];
-            })}
-            datepicker={form.datepicker}
-          />
-        ))}
-        {form.techs.length && item[34] !== '0' ? (
-          <p style={{ marginTop: 10 }}>
-            Задача выполнится в течении: <span style={{ fontWeight: 500 }}>{Math.ceil(item[34] / (8 * form.techs.length))} {declOfNum(Math.ceil(item[34] / (8 * form.techs.length)), ['дня', 'дней', 'дней'])}</span>
-          </p>
-        ) : null}
+          <p className={styles.title}>Техники</p>
+          {users.find(el => +el.DEP === user.UF_DEPARTMENT[0]) ? users.find(el => +el.DEP === user.UF_DEPARTMENT[0]).OTHER?.map(el =>
+            <TechItem
+              item={el}
+              key={el.ID}
+              func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
+              func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
+              task={item}
+              checked={form.techs.filter(el2 => el2 === `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`).length}
+              techs={form.techs}
+              all={form.all}
+              tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
+              setCoef={(c, name) => setCoef(prevState => {
+                const newArr = prevState.filter(names => names.name !== name)
+                return [...newArr, { name: name, coef: c }]
+              })}
+              datepicker={form.datepicker}
+            />) : users.find(el => +el.DEP === 5)?.OTHER?.map(el =>
+              <TechItem
+                item={el}
+                key={el.ID}
+                func={() => setForm(({ ...form, techs: [...form.techs, `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`] }))}
+                func2={() => setForm(({ ...form, techs: form.techs.filter(el2 => el2 !== `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`) }))}
+                task={item}
+                checked={form.techs.filter(el2 => el2 === `${el.LAST_NAME} ${el.NAME} ${el.SECOND_NAME}`).length}
+                techs={form.techs}
+                all={form.all}
+                tasksToday={today.filter(el2 => el2[8] === item[8] && el2[3] === item[3])}
+                setCoef={(c, name) => setCoef(prevState => {
+                  const newArr = prevState.filter(names => names.name !== name)
+                  return [...newArr, { name: name, coef: c }]
+                })}
+                datepicker={form.datepicker}
+              />)}
+          {form.techs.length && item[34] !== '0' ? <p style={{ marginTop: 10 }}>Задача выполнится в течении: <span style={{ fontWeight: 500 }}>{Math.ceil(item[34] / (8 * form.techs.length))} {declOfNum(Math.ceil(item[34] / (8 * form.techs.length)), ['дня', 'дней', 'дней'])}</span></p> : null}
         </div>
         <div>
           {form.typetime !== 'fixed' ? <label className={styles.label_check}>
