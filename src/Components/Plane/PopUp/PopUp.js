@@ -119,16 +119,30 @@ const PopUp = ({ item, time, close }) => {
   })
 
   // Последний раз техники и админы обновлялись 27.09.2024
+  /*
+   * Астрахань = [5]
+   * Ахтубинск = [25]
+   * Элиста = [51]
+   * Володарский = [41]
+   * Знаменск = [43]
+   * Лиман = [37]
+   * Чёрный Яр = [45]
+  */
   const techsData = [
-    //{ ID: "3789", NAME: 'Денис', LAST_NAME: 'Закаблуков', SECOND_NAME : 'Владимирович', UF_DEPARTMENT: [15] },
+  //{ ID: "3789", NAME: 'Денис', LAST_NAME: 'Закаблуков', SECOND_NAME : 'Владимирович', UF_DEPARTMENT: [15] },
     { ID: "3707", NAME: 'Сергей', LAST_NAME: 'Галкин', SECOND_NAME: 'Александрович', UF_DEPARTMENT: [5] },
     { ID: "3769", NAME: 'Александр', LAST_NAME: 'Косарев', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
     { ID: "91", NAME: 'Евгений', LAST_NAME: 'Орлов', SECOND_NAME: 'Сергеевич', UF_DEPARTMENT: [5] },
     { ID: "81", NAME: 'Сергей', LAST_NAME: 'Пономарев', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] },
-    { ID: "3717", NAME: 'Егор', LAST_NAME: 'Трусов', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] }
+    { ID: "3717", NAME: 'Егор', LAST_NAME: 'Трусов', SECOND_NAME: 'Владимирович', UF_DEPARTMENT: [5] },
+    { ID: "201", NAME: 'Евгений', LAST_NAME: 'Тенин', SECOND_NAME: 'Михайлович', UF_DEPARTMENT: [25] },
+    { ID: "161", NAME: 'Рамазан', LAST_NAME: 'Сариев', SECOND_NAME: 'Ергазиевич', UF_DEPARTMENT: [41] },
+    { ID: "3775", NAME: 'Баир', LAST_NAME: 'Менкураев', SECOND_NAME: 'Анатольевич', UF_DEPARTMENT: [51] },
+    { ID: "177", NAME: 'Николай', LAST_NAME: 'Мусабеков', SECOND_NAME: 'Валериевич', UF_DEPARTMENT: [51] },
+    { ID: "133", NAME: 'Савр', LAST_NAME: 'Хурумчиев', SECOND_NAME: 'Батаевич', UF_DEPARTMENT: [51] }
   ];
 
-  const admins = ['1', '11', '33', '29', '109', '3707', '211', '3789'];
+  const admins = ['1', '11', '33', '29', '109', '211', '3707', '3789'];
 
   const lowleveltech = ['Трусов Егор Владимирович'];
 
@@ -272,8 +286,6 @@ const PopUp = ({ item, time, close }) => {
               </select>
             </label> : null}
           </div>
-
-
         </div> : null}
         <div className={styles.block}>
         <p className={styles.title}>Техники</p>

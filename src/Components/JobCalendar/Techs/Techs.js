@@ -58,10 +58,7 @@ export const TechList = () => {
                             el.WORK_POSITION === 'Водитель' ?
                             techs.filter(el2 => el2[3].indexOf(`${el.LAST_NAME}`) !== -1).length ? Plus : Minus :
                             techs.filter(el2 => el2[1].indexOf(`${el.LAST_NAME}`) !== -1).length ? Plus : Minus
-
-
                         }
-
                              alt=""
                              style={{width: 14, paddingRight: 5}}/>
                         {i+1}. {el.LAST_NAME} <span>({el.WORK_POSITION[0]}) </span><span style={{color: 'red'}}>{myTasks.filter(el2=>el2[42].indexOf(el.LAST_NAME) !== -1 ).length !== 0 ? `(${myTasks.filter(el2=>el2[42].indexOf(el.LAST_NAME) !== -1 ).length})` : null}</span></li>

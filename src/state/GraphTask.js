@@ -4,12 +4,9 @@ import {createStore, createEffect, combine} from 'effector'
 
 export const getData = createEffect(async (date) => {
     const url = `getTimeJobGraph.php?date=${date}`
-
     const base = 'https://volga24bot.com/kartoteka/api/tech'
     const req = await fetch(`${base}/${url}`)
-
     return req.json()
-
 })
 
 
