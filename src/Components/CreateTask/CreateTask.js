@@ -18,9 +18,7 @@ import { $customerStatus, getCustomer, setCustomer } from "../../state/getCustom
 import { $items } from '../../store/objectWithAndromeda'
 import EquipmentPopUp from '../Equipment/EquipmentPopUp';
 
-
 const utils = ['ОС', 'ПС', 'ВН', 'КТС', 'ТО', 'Иное (написать в комментарий)']
-
 
 const PopUpWithTimer = () => {
     const [visible, setvisible] = useState(true)
@@ -70,7 +68,6 @@ const PopUp = ({ data, func }) => {
         </div>
     )
 }
-
 
 const CreateTask = ({ func }) => {
     const user = useStore($user);
@@ -175,18 +172,23 @@ const CreateTask = ({ func }) => {
                     {form.type}
                     <label>
                         <b>Вид заявки</b>
-                        <select className={styles.select} onFocus={() => {
-                            setFocusNum(false)
-                            setFocusAddress(false)
-                            setFocusName(false)
-                            setFocusUtils(false)
-                        }} onChange={(e) => {
-                            let newComment = "";
-                            if (e.target.value === "ТО") newComment = "Ежеквартальное ТО";
-                            setForm(prevState => ({ ...prevState, type: e.target.value, comment: newComment, timeJob: '0.5' }))
-                        }}>
-                            {options.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
-                        </select>
+                        <Select onFocus={() => {
+                            setFocusNum(false);
+                            setFocusAddress(false);
+                            setFocusName(false);
+                            setFocusUtils(false);
+                        }}
+                        onChange={(selectedOption) => {
+                            const newComment = selectedOption.value === "ТО" ? "Ежеквартальное ТО" : "";
+                            setForm(prevState => ({
+                                ...prevState,
+                                type: selectedOption.value,
+                                comment: newComment,
+                                timeJob: '0.5'
+                            }));
+                        }}
+                        options={options.map(el => ({ value: el.value, label: el.label }))}
+                        placeholder="Выберите вид заявки"/>
                     </label>
                     {form.type === 'Заявка' || form.type === '' || form.type === 'ТО' || form.type === 'Демонтаж' || form.type === 'Претензия' || form.type === 'Нет контрольного события'
                         || form.type === 'Снятие/Постановка' || form.type === 'Шлейф' || form.type === 'КТС' || form.type === 'Ключ' || form.type === '220' ?
@@ -195,19 +197,24 @@ const CreateTask = ({ func }) => {
                             {form.type === 'Заявка' || form.type === '' || form.type === 'Снятие/Постановка' || form.type === 'Шлейф'
                                 || form.type === 'КТС' || form.type === 'Ключ' || form.type === '220' ? <label>
                                 <b>Проблема</b>
-                                <select className={styles.select} onFocus={() => {
-                                    setFocusNum(false)
-                                    setFocusAddress(false)
-                                    setFocusName(false)
-                                    setFocusUtils(false)
-                                }} onChange={(e) => {
-                                    let newComment = "";
-                                    setForm(prevState => ({ ...prevState, type: e.target.value, comment: newComment }))
-                                }}>
-                                    {zayavka_options.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
-                                    <option value="" selected disabled hidden>Выбери проблему</option>
-                                </select>
-
+                                <Select
+                                    onFocus={() => {
+                                        setFocusNum(false);
+                                        setFocusAddress(false);
+                                        setFocusName(false);
+                                        setFocusUtils(false);
+                                    }}
+                                    onChange={(selectedOption) => {
+                                        let newComment = "";
+                                        setForm(prevState => ({
+                                            ...prevState,
+                                            type: selectedOption.value,
+                                            comment: newComment
+                                        }));
+                                    }}
+                                    options={zayavka_options.map(el => ({ value: el.value, label: el.label }))}
+                                    placeholder="Выберите проблему"
+                                />
                             </label>
                                 : null}
                             <div style={{ position: 'relative' }} >
@@ -222,7 +229,7 @@ const CreateTask = ({ func }) => {
                                 </label>
                                 {focusNum ? <SearchItems value={form.objNum} items={items} type={"id"} func={(a, b, c) => setForm(prevState => ({ ...prevState, objNum: a, name: b, address: c }))} focus={() => setFocusNum(false)} /> : null}
                             </div>
-                            < div style={{ position: 'relative' }}>
+                            <div style={{ position: 'relative' }}>
                                 <label>
                                     Адрес объекта
                                     <input type="text" onFocus={() => {
@@ -247,29 +254,43 @@ const CreateTask = ({ func }) => {
                                 {focusName ? <SearchItems value={form.name} items={items} type={"Name"} func={(a, b, c) => setForm(prevState => ({ ...prevState, objNum: a, name: b, address: c }))} focus={() => setFocusName(false)} /> : null}
                             </div>
                             {form.type !== 'Нет контрольного события' ? <label>
-                                Тел. клиента
-                                <input type="text" onFocus={() => {
-                                    setFocusNum(false)
-                                    setFocusAddress(false)
-                                    setFocusName(false)
-                                    setFocusUtils(false)
-                                }} className={styles.inputText} value={form.clientPhone}
+                                Тел. клиента	
+								<input type="text" onFocus={() => {
+									setFocusNum(false);
+									setFocusAddress(false);
+									setFocusName(false);
+									setFocusUtils(false);
+								}}
+								className={styles.inputText}
+								value={form.clientPhone}
+								onChange={(e) => {
+									let phoneNumber = e.target.value;
+									let formatPhone;
+									if (phoneNumber.startsWith('+')) {
+										phoneNumber = '+' + phoneNumber.slice(1).replace(/[^\d]/g, '');
+									} else {
+										phoneNumber = phoneNumber.replace(/[^\d]/g, '');
+									}
+									
+									const isPlus7 = phoneNumber.startsWith('+7');
+									if (isPlus7) {
+										formatPhone = phoneNumber.replace('+7', '8');
+									} else {
+										formatPhone = phoneNumber;
+									}
 
-                                    onChange={(e) => {
-                                        let phoneNumber = e.target.value
-                                        if (phoneNumber.length !== 12) {
-                                            let formatPhone = phoneNumber.replace('+7', '8').replace(/[^\d]/g, '')
+									const maxLength = isPlus7 ? 12 : 11;
+									if (phoneNumber.length > maxLength) {
+										phoneNumber = phoneNumber.slice(0, maxLength);
+									}
 
-                                            let eleven = formatPhone.substr(0, 11);
+									setForm(prevState => ({ ...prevState, clientPhone: phoneNumber}));
 
-                                            if (formatPhone.length - 1 < 11) {
-                                                setForm(prevState => ({ ...prevState, clientPhone: formatPhone }))
-                                                if (eleven.length === 11) {
-                                                    getCustomer(eleven)
-                                                }
-                                            }
-                                        }
-                                    }} placeholder="Формат: +7 либо 8" />
+									if (formatPhone.length === 11) {
+										getCustomer(formatPhone);
+									}
+								}}
+								placeholder="Формат: +7 либо 8"/>
                             </label> : null}
                             {form.type !== 'Нет контрольного события' ? <label>
                                 ФИО. клиента
@@ -295,24 +316,39 @@ const CreateTask = ({ func }) => {
                                 <input type="text" className={styles.inputText} value={form.name} onChange={(e) => setForm(prevState => ({ ...prevState, name: e.target.value }))} />
                             </label> : null}
                             <label>
-                                Тел. клиента
-                                <input type="tel" className={styles.inputText} value={form.clientPhone} onChange={(e) => {
-                                    let phoneNumber = e.target.value
-                                    if (phoneNumber.length !== 12) {
-                                        let formatPhone = phoneNumber.replace('+7', '8').replace(/[^\d]/g, '')
+                                Тел. клиента	
+								<input type="text" onFocus={() => {
+									setFocusNum(false);
+									setFocusAddress(false);
+									setFocusName(false);
+									setFocusUtils(false);
+								}}
+								className={styles.inputText}
+								value={form.clientPhone}
+								onChange={(e) => {
+									let phoneNumber = e.target.value;
+									let formatPhone;
+									if (phoneNumber.startsWith('+')) {
+										phoneNumber = '+' + phoneNumber.slice(1).replace(/[^\d]/g, '');
+									} else {
+										phoneNumber = phoneNumber.replace(/[^\d]/g, '');
+									}
+									
+									const isPlus7 = phoneNumber.startsWith('+7');
+									if (isPlus7) {
+										formatPhone = phoneNumber.replace('+7', '8');
+									} else {
+										formatPhone = phoneNumber;
+									}
 
-                                        let eleven = formatPhone.substr(0, 11);
+									const maxLength = isPlus7 ? 12 : 11;
+									if (phoneNumber.length > maxLength) {
+										phoneNumber = phoneNumber.slice(0, maxLength);
+									}
 
-
-                                        if (formatPhone.length - 1 < 11) {
-                                            setForm(prevState => ({ ...prevState, clientPhone: formatPhone }))
-                                            // if (eleven.length === 11) {
-
-                                            //     getCustomer(eleven)
-                                            // }
-                                        }
-                                    }
-                                }} placeholder="Формат: +7 либо 8" />
+									setForm(prevState => ({ ...prevState, clientPhone: phoneNumber}));
+								}}
+								placeholder="Формат: +7 либо 8"/>
                             </label>
                             <label>
                                 ФИО. клиента
@@ -323,38 +359,12 @@ const CreateTask = ({ func }) => {
                         </div>}
                     <label>
                         Исполнитель
-                        <Select
-                            options={user.UF_DEPARTMENT[0] === 15
+                        <Select options={user.UF_DEPARTMENT[0] === 15
                                 ? options2.concat([{ value: 'Филиппов Артём Сергеевич', label: 'Филиппов А.С.' }]).concat([{ value: '', label: 'Общая (Нет исполнителя)' }])
                                 : options2.concat([{ value: '', label: 'Общая (Нет исполнителя)' }])}
                             onChange={(e) => setForm(prevState => ({ ...prevState, customer: e.value }))}
                             placeholder={'Общая'} />
                     </label>
-
-                    {/* TODO - Сделать создание объекта с заявкой */}
-                    {/* {form.customer && (user.UF_DEPARTMENT[0] === 13 || user.UF_DEPARTMENT[0] === 15) ? <label className={styles.equipment}>
-                        Добавить Инвентарь
-                        
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th onClick={e => allEquipment.map(item => selectedEquipment.includes(item.id) ? editEquipment("editStatus", { id: item.id, status: 'Выдан', techName: item.techName, taskId: form.id !== 0 ? tasksFilter.id : 0, blockNumber: noBlockNumberCheck !== 0 ? form.blockNumber : "0" }, user) : null)}>Вид</th>
-                                    <th style={{cursor: "pointer"}} onClick={e => setCreate(true)}>Название +</th>
-                                </tr>
-                                {allEquipment?.filter(el => el.type === "Монтажные" && (el.status === "Создан" || (el.status === "Выдан" && el.blockNumber==="0" && el.taskId === "0")) && el.techName === form.customer).map(el =>
-                                    <tr key={el.id} style={{ backgroundColor: selectedEquipment.includes(el.id) ? "#a2d2ff" : ""}} >
-                                        <td>{el.type1}</td>
-                                        <td style = {{cursor: "pointer"}} onClick={e => selectedEquipment.includes(el.id) ?
-                                            setSelectedEquipment(selectedEquipment.filter(elem => elem !== el.id))
-                                            : setSelectedEquipment([...selectedEquipment, el.id])}>
-                                            {el.name}
-                                            </td>
-                                    </tr>)}
-                            </tbody>
-                        </table>
-
-                    </label> : null} */}
-
                     <label>
                         {form.type === 'ТО'
                             ? <>
@@ -374,31 +384,60 @@ const CreateTask = ({ func }) => {
                     </label>
                     {form.type !== 'Нет контрольного события' ? <label>
                         Услуги
-                        <input type="text" onFocus={() => {
-                            setFocusNum(false)
-                            setFocusAddress(false)
-                            setFocusName(false)
-                            setFocusUtils(true)
-                        }} placeholder={'OC, ПС, и т.д'} className={styles.inputText} value={form.voText} onChange={(e) => setForm(prevState => ({ ...prevState, voText: e.target.value }))} />
-                        {focusUtils ? <div className={styles.utilsWrapper}>{utils.map(el => <label key={el} className={styles.utils}><input onChange={(e) => {
-                            if (el.indexOf('Иное') === -1) {
-
-
-                                if (e.target.checked) {
-                                    const newVo = [...form.vo, el];
-                                    setForm(prevState => ({ ...prevState, vo: [...form.vo, el], voText: newVo.join(',') }))
-                                } else {
-
-                                    const newVo = form.vo.filter(el2 => el2 !== el);
-
-                                    setForm(prevState => ({ ...prevState, vo: form.vo.filter(el2 => el2 !== el), voText: newVo.join(',') }))
-                                }
-
-
-                            } else {
-                                setForm(prevState => ({ ...prevState, vo: [...form.vo, el] }))
-                            }
-                        }} type="checkbox" checked={form.vo.indexOf(el) !== -1} />{el}</label>)}</div> : null}
+                        <input 
+                            type="text" 
+                            onFocus={() => {
+                                setFocusNum(false);
+                                setFocusAddress(false);
+                                setFocusName(false);
+                                setFocusUtils(true);
+                            }} 
+                            placeholder={'OC, ПС, и т.д'} 
+                            className={styles.inputText} 
+                            value={form.voText} 
+                            onChange={(e) => setForm(prevState => ({ ...prevState, voText: e.target.value }))} 
+                        />
+                        {focusUtils ? (
+                            <div className={styles.utilsWrapper}>
+                                {utils.map(el => (
+                                    <label key={el} className={styles.utils}>
+                                        <input 
+                                            onChange={(e) => {
+                                                if (el === 'Иное') {
+                                                    // Добавляем "Иное", но не убираем галочку
+                                                    setForm(prevState => ({
+                                                        ...prevState,
+                                                        vo: [...prevState.vo, el],
+                                                        voText: [...prevState.vo, el].join(',')
+                                                    }));
+                                                } else {
+                                                    if (e.target.checked) {
+                                                        // Добавляем элемент в список
+                                                        const newVo = [...form.vo, el];
+                                                        setForm(prevState => ({
+                                                            ...prevState,
+                                                            vo: newVo,
+                                                            voText: newVo.join(',')
+                                                        }));
+                                                    } else {
+                                                        // Убираем элемент из списка
+                                                        const newVo = form.vo.filter(el2 => el2 !== el);
+                                                        setForm(prevState => ({
+                                                            ...prevState,
+                                                            vo: newVo,
+                                                            voText: newVo.join(',')
+                                                        }));
+                                                    }
+                                                }
+                                            }} 
+                                            type="checkbox" 
+                                            checked={form.vo.includes(el)} // Проверяем, включен ли элемент
+                                        />
+                                        {el}
+                                    </label>
+                                ))}
+                            </div>
+                        ) : null}
                     </label> : null}
                     <label>
                         Дата выполнения
@@ -410,10 +449,20 @@ const CreateTask = ({ func }) => {
                         }} className={styles.inputText} value={form.date} onChange={(e) => { setForm(prevState => ({ ...prevState, date: e.target.value })); }} />
                     </label>
                     <label>
-                        Время на работу (час):
-                        <br />
-                        <input type="number" className={styles.inputText} value={form.timeJob} onChange={(e) => setForm(prevState => ({ ...prevState, timeJob: e.target.value.replace(/,/g, ".") }))} />
-                    </label>
+						Время на работу (час):
+						<input
+							type="number"
+							className={styles.inputText}
+							value={form.timeJob}
+							onChange={(e) => {
+								const value = Math.max(0.5, parseFloat(e.target.value));
+								setForm(prevState => ({ ...prevState, timeJob: value.toFixed(1) }));
+							}}
+							step = "0.5"
+							min = "0.5"
+							max = "168"
+						/>
+					</label>
                     <div className={styles.flex_box}>
                         <label className={styles.checkbox}>
 
@@ -431,8 +480,6 @@ const CreateTask = ({ func }) => {
             </div>
             {/* {create ? <EquipmentPopUp method="create" close={(a) => setCreate(a)} /> : null} */}
         </>
-
-
     );
 }
 
