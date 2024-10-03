@@ -488,7 +488,7 @@ const TaskItemNew = ({ item }) => {
               <option value="">Общая (Без Исполнителя)</option>
               <option value={item[7].length ? getShortName(item[7]) : item[55] ? getShortName(item[55]) : ""} selected disabled hidden>{item[7].length ? getShortName(item[7]) : item[55].length ? getShortName(item[55]) : "Общая (Без Исполнителя)"}</option>
               {techsData.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
-              {user.UF_DEPARTMENT[0] === 15 ? <option value="Закаблуков Денис Владимирович">Закаблуков Д.В. </option> : null}
+              {user.UF_DEPARTMENT[0] === 15 ? <option value="Филиппов Артём Сергеевич">Филиппов А.С.</option> : null}
             </select> :
             <p>{item[7].length ? getLastName(item[7]) : item[55].length ? getLastName(item[55]) : 'Не назначен'} </p>}
         </div>
