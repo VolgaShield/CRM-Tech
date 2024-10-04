@@ -30,12 +30,11 @@ const Nav = ({setRefresh}) => {
 
     return (
         <div>
-
             <div className={styles.createTask}>
                 <button onClick={() => {
                   setRefresh(prev => !prev);
                   setCreateTask(true);
-                  }}>+</button>
+                  }}>Создать заявку</button>
             </div>
               <div className={styles.card}>
               <button onClick={() => setIsOpen(true)}>
@@ -136,9 +135,7 @@ const Nav = ({setRefresh}) => {
                     </ul>
                   : null }
                 </div>
-
             <TypeNav/></div>
-
     );
 }
 

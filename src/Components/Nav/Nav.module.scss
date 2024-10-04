@@ -125,14 +125,36 @@
   justify-content: center;
 
   button {
-    margin-left: 20px;
-    padding: 5px 11px;
-    background: red;
-    border: none;
-    border-radius: 7px;
-    color: white;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, red, orange, green, darkgreen);
+    background-size: 400% 400%;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
     font-weight: 500;
     font-size: 20px;
+    justify-content: center;
+    transition: transform 0.1s;
+  }
+
+  button:hover {
+    filter: brightness(1.1);
+  }
+
+  button:active {
+    color: white;
+    transform: scale(0.95);
+    animation: rainbow 0.2s forwards;
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0% 50%;
+    }
+	100% {
+      background-position: 100% 50%;
+    }
   }
 }
 
