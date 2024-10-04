@@ -483,6 +483,4 @@ const CreateTask = ({ func }) => {
     );
 }
 
-
-
 export default CreateTask;

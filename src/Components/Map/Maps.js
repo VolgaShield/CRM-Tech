@@ -134,14 +134,9 @@ class WithMarkers extends Component {
                         <p className={styles.address}>{this.state.selectedPlace.address}</p>
                         <p className={styles.problem}>{this.state.selectedPlace.problem}</p>
                         <p className={styles.time}>{this.state.selectedPlace.dateCreate}</p>
-
                     </div>
-
-
-
                 </InfoWindow>
                 <MapNav/>
-
             </Map>
         );
     }
