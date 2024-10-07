@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React from 'react';
 import styles from "./Maps.module.scss";
 import {$mapNav, setMapNav} from "../../state/mapNav";
 import {useStore} from "effector-react";

@@ -1,6 +1,6 @@
 import styles from "../JobCalendar.module.scss";
 import TechAnalys from "../TechAnalys";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TimeLineItem } from "./TimeLineItem";
 import { useStore } from "effector-react";
 import { $firstTime } from "../../../state/graphTime";

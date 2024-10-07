@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment-timezone";
 import styles from "../JobCalendar.module.scss";
 import { setShowTask } from "../../../state/showTask";

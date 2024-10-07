@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Collapse.module.scss'
 import Drop from '../../../img/dropdown.png'
-import {useStore} from "effector-react";
-import {$allReqStatus} from "../../../state";
-import moment from "moment";
-function getDays(date) {
-    return new Date(`${date}T00:00:00`).getTime()
-}
 
 const Collapse = ({defaultOpen = false, title, children}) => {
 

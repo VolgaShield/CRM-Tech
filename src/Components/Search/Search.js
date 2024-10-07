@@ -1,17 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Search.module.scss'
 import Close from '../../img/close.png'
 import SearchImg from '../../img/search.png'
-import {$searchInput, getReq, setSearch, setSearchInput, $reqStatus, $checkBox, setCheckBox} from "../../state/Search";
+import {$searchInput, setSearch, setSearchInput, $reqStatus, $checkBox, setCheckBox} from "../../state/Search";
 import {useStore} from "effector-react";
-import Moment from "react-moment";
 
 import {setScrollY} from "../../state/scrollY";
 import SearchItemsWrapper from "./SearchItemsWrapper";
-import {setShowTask} from "../../state/showTask";
-import {$usersStatus} from "../../state/getUsers";
-import {filterTaskCust} from "../../utils/filterTaskCust";
-import {getLastName} from "../../utils/getLastName";
 import TaskItem from "../TaskItem/TaskItem";
 
 
@@ -19,7 +14,6 @@ const Search = () => {
     const input = useStore($searchInput)
     const req = useStore($reqStatus)
     const checkBox = useStore($checkBox)
-    const deps = useStore($usersStatus);
 
     const [isNew, setIsNew] = useState(true);
     const [isWorking, setIsWorking] = useState(true);

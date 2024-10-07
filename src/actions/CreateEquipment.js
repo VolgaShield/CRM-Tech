@@ -1,5 +1,4 @@
 import { setLoading } from "../state/loading";
-import { setEquipmentHistory } from "./setEquipmentHistory";
 
 export const createEquipment = async (form, user) => {
   setLoading(true);

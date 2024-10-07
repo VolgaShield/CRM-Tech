@@ -7,7 +7,7 @@ import styles from './PopUp.module.scss';
 import { $user } from "../../../state/user";
 import { $usersStatus } from "../../../state/getUsers";
 import { $today } from "../../../state/tasks";
-import { getAllReq, getNewReq } from "../../../state";
+import { getAllReq } from "../../../state";
 import { setHistory } from "../../../actions/setHistory";
 import Transfers from './serviceTransfers';
 

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import styles from './Search.module.scss'
-import {useStore} from "effector-react";
-import {$scrollY} from "../../state/scrollY";
+import { useStore } from "effector-react";
+import { $scrollY } from "../../state/scrollY";
 
 
 const SearchItemsWrapper = (props) => {
@@ -19,7 +19,5 @@ const SearchItemsWrapper = (props) => {
     );
 
 }
-
-
 
 export default SearchItemsWrapper;

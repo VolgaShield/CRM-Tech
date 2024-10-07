@@ -1,8 +1,6 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow, Polyline, Circle } from "google-maps-react";
-import { Component, useEffect } from "react";
+import { Component } from "react";
 import styles from "./Maps.module.scss"
-import MapHistoryNav from "./mapHistoryNav";
-import Check from '../../img/check.png'
 
 const mapStyle = [
     {

@@ -11,7 +11,6 @@ import Search from "./Components/Search/Search";
 import MapContainer from "./Components/Map/Maps";
 import { Stats } from './Components/Stats/Stats';
 import { Equipment } from './Components/Equipment/Equipment';
-import TaskItemWrapper from "./Components/TaskItemWrapper/TaskItemWrapper";
 import Loader from "./Components/Loader/Loader";
 import Raport from "./Components/Raport/Raport";
 import CreateTask from "./Components/CreateTask/CreateTask";
@@ -19,8 +18,7 @@ import TaskItemNew from "./Components/TaskItemNew/TaskItemNew";
 import BurgerMenu from "./Components/BurgerMenu/BurgerMenu";
 import Plane from "./Components/Plane/Plane";
 
-import { $allReqStatus, getAllReq, getMainReq } from "./state";
-import { $task } from "./state/task";
+import { $allReqStatus, getAllReq } from "./state";
 import { $mapNav } from "./state/mapNav";
 import { $depStatus, $user, getDep, setUser } from "./state/user";
 import { $search, getReq, setSearch } from "./state/Search";

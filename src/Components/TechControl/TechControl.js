@@ -10,13 +10,12 @@ import TaskListWrapper from "./TaskListWrapper";
 import ChangeTechWrapper from "./ChangeTech";
 
 import { getNewReq, $newReqStatus } from "../../state";
-import { $techsStatus, $techStatus, getStatus, getTechs } from "../../state/Techs";
+import { getStatus, getTechs } from "../../state/Techs";
 import { $firstTime, $secondTime } from "../../state/techTime";
-import { $planeStatus, $selectedUser, getPlan, setSelectedUser } from "../../state/plan";
-import { $graphData, getData } from "../../state/GraphTask";
+import { getPlan } from "../../state/plan";
+import { getData } from "../../state/GraphTask";
 import { $selected, cleareSelected } from "../../state/longTouch";
-import { $scrollY, setScrollY } from "../../state/scrollY";
-import { setShowTask } from "../../state/showTask";
+import { setScrollY } from "../../state/scrollY";
 
 import Close from '../../img/close.png';
 import formatDateTime from '../../utils/formatDateTime';

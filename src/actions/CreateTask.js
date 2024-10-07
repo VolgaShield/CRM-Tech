@@ -1,5 +1,4 @@
-import { GiUfo } from "react-icons/gi";
-import { getAllReq, getMainReq, getNewReq } from "../state";
+import { getNewReq } from "../state";
 import { setLoading } from "../state/loading";
 import { setShowTask } from "../state/showTask";
 

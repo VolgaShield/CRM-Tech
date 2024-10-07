@@ -1,28 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './Search.module.scss'
 import Close from '../../img/close.png'
-import {$myTasksNav, setMyTasksNav, setOpenComment} from "../../state/openComment";
-import Moment from "react-moment";
-import {useStore} from "effector-react";
-import {$myTask, $taskDataStatus, getMyTask, showTaskData} from "../../state/myTask";
-import MyTaskItem from "../MyTasks/MyTaskItem";
-import {$depStatus, $user} from "../../state/user";
-import {setShowTask} from "../../state/showTask";
+import { $myTasksNav, setMyTasksNav, setOpenComment } from "../../state/openComment";
+import { useStore } from "effector-react";
+import { $myTask, $taskDataStatus, getMyTask } from "../../state/myTask";
+import { $depStatus, $user } from "../../state/user";
 import TaskItem from "../TaskItem/TaskItem";
-import { Input, ChatList} from 'react-chat-elements'
+import { Input } from 'react-chat-elements'
 import Trash from '../../img/trashRed.png'
 import moment from 'moment'
-import Send from "../../img/send.png";
-import {sendComment} from "../../actions/SendComment";
-import {$commentsStatus, getComment} from "../../state/comments";
-import {$navMyTasks, setNavMyTasks} from "../../state/Nav";
+import { sendComment } from "../../actions/SendComment";
+import { $commentsStatus, getComment } from "../../state/comments";
+import { $navMyTasks, setNavMyTasks } from "../../state/Nav";
 
-const avatars = {
-    1: 'https://bitrix2.cdnvideo.ru/b11017596/resize_cache/63/23365dd92c1f65a6eb81283cfddb6812/main/396/396032264fd6c5d3973a4e3d77715a87/avatar.png?h=volga-shield.bitrix24.ru',
-    87: 'https://bitrix2.cdnvideo.ru/b11017596/resize_cache/18147/23365dd92c1f65a6eb81283cfddb6812/main/2df/2df72287ed250054597721cc5706f27b/avatar.png?h=volga-shield.bitrix24.ru',
-    211: 'https://bitrix2.cdnvideo.ru/b11017596/resize_cache/84809/23365dd92c1f65a6eb81283cfddb6812/main/73f/73f26ddc3c733c405926bd161b776e53/Bezymyannyy.png?h=volga-shield.bitrix24.ru',
-    277: 'https://bitrix2.cdnvideo.ru/b11017596/resize_cache/209159/23365dd92c1f65a6eb81283cfddb6812/main/0c8/0c88f49799f0bd6014376a6e43a9ed26/avatar.png?h=volga-shield.bitrix24.ru'
-}
 
 const MyTasks = ({customer, tasks, info}) => {
     const [value, setValue] = useState('')
@@ -31,7 +21,6 @@ const MyTasks = ({customer, tasks, info}) => {
     const navI = useStore($navMyTasks);
     const input = useRef('')
     const list = useRef()
-    const showTask = useStore($taskDataStatus);
     const taskData = useStore($taskDataStatus);
     const user = useStore($user);
     const myTasks = useStore($myTask);

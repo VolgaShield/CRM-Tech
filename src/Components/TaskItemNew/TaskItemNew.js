@@ -1,12 +1,11 @@
 
 //IMPORTS
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMemo } from 'react';
 
 //Libraries
 import { useStore } from "effector-react";
 import moment from 'moment'
-import Select from "react-select";
 
 //Components
 import ItemChat from "./ItemChat";
@@ -19,8 +18,7 @@ import WordExport from '../ExportToDoc/ExportToDoc'
 
 //State/Store
 import { $user, $depStatus } from "../../state/user";
-import { getMyTask, showTaskData } from "../../state/myTask";
-import { $historyStatus, getHistory } from "../../state/taskHistory";
+import { getMyTask } from "../../state/myTask";
 import { $commentsStatus, getComment } from "../../state/comments";
 import { setShowTask } from "../../state/showTask";
 import { $customerStatus, getCustomer, setCustomer } from "../../state/getCustomerByPhone";
@@ -52,8 +50,6 @@ import Trash from '../../img/trashRed.png'
 import Chat from '../../img/bubble-chat.png'
 import BlockInfo from '../../img/data-complexity.png'
 import Back from "../../img/back.png";
-import Deffect from '../../img/back-arrow.png'
-import Check from '../../img/check.png'
 import ExclamationMark from '../../img/ExclamationMark.png'
 import Suitcase from '../../img/Suitcase.png'
 

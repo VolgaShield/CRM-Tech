@@ -1,5 +1,4 @@
 import {createEvent, createStore} from 'effector'
-import {getTechs} from "./Techs";
 
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());

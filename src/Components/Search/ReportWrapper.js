@@ -1,8 +1,7 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, { useState } from 'react';
 import styles from "./ReportWrapper.module.scss";
 import Close from "../../img/close.png";
 import Moment from "react-moment";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 
 const Img = ({src}) => {

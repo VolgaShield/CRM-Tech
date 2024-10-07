@@ -1,4 +1,3 @@
-import {getAllReq, getMainReq} from "../state";
 import {setLoading} from "../state/loading";
 
 const imMessageAdd = (chatId, message, isSystem = true) => {
