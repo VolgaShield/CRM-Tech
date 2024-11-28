@@ -16,8 +16,6 @@ import {
     firstTimeAdd,
     firstTimeDelete
 } from "../../state/techTime";
-import { getNewReq } from "../../state";
-
 
 const Input = ({ onChange, placeholder, value, isSecure, id, onClick }) => (
     <input

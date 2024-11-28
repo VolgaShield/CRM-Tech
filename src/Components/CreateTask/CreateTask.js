@@ -134,7 +134,6 @@ const CreateTask = ({ func }) => {
     const [focusAddress, setFocusAddress] = useState(false);
     const [focusUtils, setFocusUtils] = useState(false);
 
-    const [selectedEquipment, setSelectedEquipment] = useState([]);
     const [create, setCreate] = useState(false);
 
     const options2 = dep
@@ -145,7 +144,7 @@ const CreateTask = ({ func }) => {
 
     const [allEquipment, setAllEquipment] = useState([]);
     useEffect(() => {
-        if (user.UF_DEPARTMENT[0] === 13 || user.UF_DEPARTMENT[0] === 15 && create === false) {
+        if ((user.UF_DEPARTMENT[0] === 13 || user.UF_DEPARTMENT[0] === 15) && create === false) {
             fetch(`https://volga24bot.com/kartoteka/api/tech/daily/getAllEquipment.php`)
                 .then(res => res.json())
                 .then(data => setAllEquipment(data.items))

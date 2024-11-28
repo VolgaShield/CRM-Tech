@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 
 import styles from './TechControl.module.scss'
-import {useStore} from "effector-react";
-import {$scrollY} from "../../state/scrollY";
+import { useStore } from "effector-react";
+import { $scrollY } from "../../state/scrollY";
 
 
 

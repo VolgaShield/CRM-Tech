@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './JobCalendar.module.scss'
 import { useStore } from "effector-react";
 import { $techsStatus, $techStatus, getStatus, getTechs } from "../../state/Techs";
@@ -7,22 +7,19 @@ import { $firstTime } from "../../state/graphTime";
 import DateComponent from "./DatePicker";
 import { $graphData, getData } from "../../state/GraphTask";
 
-import { $openComment, setOpenComment } from "../../state/openComment";
-import { $myTask, getMyTask } from "../../state/myTask";
-import { $bitrixDep, $depStatus, $user, getDep } from "../../state/user";
+import { $openComment } from "../../state/openComment";
+import { getMyTask } from "../../state/myTask";
+import { $depStatus, $user } from "../../state/user";
 import MyTasks from "./MyTasks";
 import TechList from "./Techs/Techs";
 import { TimeLine } from "./LineItem/LineItem";
 import { TimeLineCommon } from './LineItem/LineItemCommon';
 
-import { $planStatus, $selectedUser, getPlan, setSelectedUser } from "../../state/plan";
+import { $selectedUser, getPlan, setSelectedUser } from "../../state/plan";
 
 import NavTasks from "./NavTasks/NavTasks";
-import { getUsers } from "../../state/getUsers";
 
 import { $allReqStatus } from '../../state';
-
-
 
 const JobCalendar = () => {
     const graph = useStore($graphData);

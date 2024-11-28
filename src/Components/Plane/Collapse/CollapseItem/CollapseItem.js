@@ -2,9 +2,8 @@ import React, {useCallback, useMemo, useState} from 'react';
 import styles from './CollapseItem.module.scss'
 import moment from 'moment'
 import PopUp from "../../PopUp/PopUp";
-import {$selected, setLongtouch, setSelected} from "../../../../state/longTouch";
+import {$selected } from "../../../../state/longTouch";
 import {useStore} from "effector-react";
-import LongTouchWrapper from "../../../TaskItem/LongTouchWrapper";
 import {$today} from "../../../../state/tasks";
 
 

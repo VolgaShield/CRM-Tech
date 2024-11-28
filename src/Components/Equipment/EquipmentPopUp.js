@@ -5,16 +5,12 @@ import { $user } from "../../state/user";
 import { $depStatus } from "../../state/user";
 import { useStore } from "effector-react";
 import { createEquipment } from "../../actions/CreateEquipment";
-import { setShowTask } from "../../state/showTask";
-import { getAllByAltText } from "@testing-library/react";
 import { useState } from 'react';
 import { editEquipment } from '../../actions/EditEquipment';
 
-import { setEquipmentHistory } from '../../actions/setEquipmentHistory';
+import { $allReqStatus } from '../../state';
 
-import { $allReqStatus, getAllReq } from '../../state';
-
-import { MdSell, MdOutlineMonetizationOn, MdAttachment, MdAutoAwesomeMotion, MdOutlineLooksOne, MdOutlineLooksTwo, MdHourglassDisabled } from "react-icons/md";
+import { MdSell, MdOutlineMonetizationOn, MdOutlineLooksOne, MdOutlineLooksTwo, MdHourglassDisabled } from "react-icons/md";
 
 
 const EquipmentPopUp = ({ method, close, item }) => {
