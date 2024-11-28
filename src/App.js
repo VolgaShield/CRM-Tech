@@ -75,10 +75,6 @@ function App() {
         getReq();
         getUsers();
 
-        if (!dep.length) {
-            getUsers()
-        };
-
         fetchItems();
     }, []);
 
