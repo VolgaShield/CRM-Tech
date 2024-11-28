@@ -12,11 +12,10 @@ import { $loading } from "../../state/loading";
 import Loader from "../Loader/Loader";
 import Info from '../../img/info.png'
 import { $allReqStatus } from "../../state";
-import { $planStatus, $selectedUser } from "../../state/plan";
+import { $planStatus } from "../../state/plan";
 import { $graphData } from "../../state/GraphTask";
 import { $customerStatus, getCustomer, setCustomer } from "../../state/getCustomerByPhone";
 import { $items } from '../../store/objectWithAndromeda'
-import EquipmentPopUp from '../Equipment/EquipmentPopUp';
 
 const utils = ['ОС', 'ПС', 'ВН', 'КТС', 'ТО', 'Иное (написать в комментарий)']
 

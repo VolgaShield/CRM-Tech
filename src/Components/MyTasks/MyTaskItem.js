@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./MyTasksItem.module.scss";
 import Close from '../../img/close.png'
 import {getMyTask, showTaskData} from "../../state/myTask";

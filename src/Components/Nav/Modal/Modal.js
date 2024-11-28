@@ -4,7 +4,7 @@ import TaskItem from "../../TaskItem/TaskItem";
 import { useStore } from "effector-react";
 import { $user } from "../../../state/user";
 
-const admins = ['1', '29', '109', '23', '3745', '211', '3789']
+const admins = ['1', '11', '29', '33', '109', '211', '3789', '3807']
 
 export const Modal = ({ setIsOpen }) => {
   const user = useStore($user);

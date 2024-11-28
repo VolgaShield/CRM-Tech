@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import styles from "./MyTasksItem.module.scss";
 import Close from '../../img/close.png'
 import {getMyTask, showTaskData} from "../../state/myTask";
-import Moment from "react-moment";
+import moment from "react-moment";
 import {$historyStatus, getHistory} from "../../state/taskHistory";
 import {useStore} from "effector-react";
 import ReportWrapper from "../Search/ReportWrapper";

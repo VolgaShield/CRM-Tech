@@ -135,7 +135,7 @@ const taskTypesArray = [
  * Фамилии Техников, которые могут просматривать заявки.
  * При открытии заявки в техслужбе данным техников она будет считаться просмотренной им.
  */
-const fioTech = ['Галкин', 'Косарев', 'Орлов', 'Пономарев', 'Трусов']
+const fioTech = ['Галкин', 'Косарев', 'Орлов', 'Пономарев', 'Трусов', 'Кузнецов']
 
 /**
  * Отображает окно информации о заявке при её выборе на странице выбора заявок
@@ -171,9 +171,9 @@ const TaskItemNew = ({ item }) => {
     }));
 
   /**ID Пользователей Битрикс, которым разрешен доступ на редактирование заявок */
-  const admins = [item[37], '1', '11', '29', '33', '109', '211', '3707', '3789'];
+  const admins = [item[37], '1', '11', '29', '33', '109', '211', '3707', '3789', '3807'];
   /** ID Пользователей Битрикс, которым доступен экспорт форм */
-  const adminsForExportForms = ['1', '33', '39', '317', '3707',  '3759', '3745', '3763', '3789']
+  const adminsForExportForms = ['1', '33', '39', '317', '3707',  '3759', '3745', '3763', '3789', '3807']
   //Информация о заявке
   const [form, setForm] = useState({
     name: item[2],
@@ -678,7 +678,36 @@ const TaskItemNew = ({ item }) => {
       {nav === 'chat' ? <ItemChat item={item} />
         : null}
 
-      {nav !== 'chat' && nav !== 'historyLocation' && (admins.includes(user.ID)) ? <footer className={styles.footerNav}>
+      {nav !== 'chat' && nav !== 'historyLocation' && (admins.includes(user.ID) && user.LAST_NAME === 'Галкин') ? <footer className={styles.footerLargeNav}>
+        <ul>
+          {item[18] !== 'Брак' ? <li onClick={() => {
+            const answer = window.prompt('Для смены статуса на "Брак" оставьте комментарий!')
+            setLoading(true)
+            fetch(`https://volga24bot.com/kartoteka/api/tech/deffectTask.php?id=${item[0]}&comment=${answer}`)
+              .then(res => res.json())
+              .then(res => {
+                setLoading(false)
+                if (res) {
+                  setHistory2(res)
+                } else {
+                  alert('Произошла ошибка!')
+                }
+              })
+
+          }}>
+            <p style={{ color: "chocolate", fontWeight: "bold", textShadow: "0.5px 0.5px 0.5px black" }}>В Брак</p>
+            <img src={ExclamationMark} alt="" />
+          </li> : null}
+          <li className={nav === 'history' ? styles.active : null} onClick={() => confirmTask()}>
+            <p style={{ color: "Green", fontWeight: "bold", textShadow: "0.5px 0.5px 0.5px black" }}>В Работу</p>
+            <img src={Suitcase} alt="" />
+          </li>
+
+        </ul>
+      </footer>
+        : null}
+        
+      {nav !== 'chat' && nav !== 'historyLocation' && (admins.includes(user.ID) && user.LAST_NAME !== 'Галкин') ? <footer className={styles.footerNav}>
         <ul>
           <li className={nav === 'info' ? styles.active : null} style={{ background: 'white' }} onClick={() => {
             const answer = window.confirm('Удалить задачу?')

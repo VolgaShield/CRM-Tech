@@ -236,6 +236,28 @@ padding-top: 1px;
   font-size: 14px;
 }
 
+.footerLargeNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  li {
+    padding: 0px 10px;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    width: 50%;
+  }
+  ul {
+    display: flex;
+    background: white;
+    :last-child {
+      border-right: none;
+    }
+  }
+  img {
+    width: 30px;
+  }
+}
 .footerNav {
   position: fixed;
   bottom: 0;
@@ -257,8 +279,8 @@ padding-top: 1px;
   img {
     width: 30px;
   }
-
 }
+
 
 .cct {
   background: red;

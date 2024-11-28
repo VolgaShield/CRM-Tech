@@ -1,7 +1,6 @@
 
 const TableStats = ({ sd, ed, stats }) => {
   const techs = Array.from(new Set(stats?.kpds?.map(el => el.tech)));
-  const days = Array.from(new Set(stats?.kpds?.map(el => el.createAt)));
 
   const colorKpd = (kpd) => {
     if (+kpd >= 70) return { 'backgroundColor': 'lightgreen' };
